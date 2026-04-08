@@ -3,7 +3,7 @@
 <!-- INFORMATION -->
 <h1 align="left">  &#127761; About</h1> 
 
-<img src="Images/Demonstration/Rice1.png" alt="Rice" align="right" width="650px">
+<img src="Images/Demonstration/Rice1.png" alt="Rice" align="right" width="600px">
 
 </br>
 
