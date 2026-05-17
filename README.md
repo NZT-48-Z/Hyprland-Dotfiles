@@ -13,5 +13,6 @@
  - Terminal: [**`Ghostty`**](https://ghostty.org/)
  - App Launcher: [**`Fuzzel`**](https://codeberg.org/dnkl/fuzzel)
  - Shell: [**`Zsh`**](https://github.com/ohmyzsh/ohmyzsh)
+ - File manager: [**`Thunar`**](https://github.com/neilbrown/thunar)
 
 </br>
