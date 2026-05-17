@@ -1,0 +1,219 @@
+{
+  // MAIN BAR //
+  "layer": "top",
+  "position": "top",
+  "name": "main",
+
+  "margin-top": 6,
+  "margin-left": 6,
+  "margin-right": 6,
+
+  "modules-left": ["group/traym", "hyprland/workspaces", "hyprland/window"],
+
+  "modules-right": [
+    "custom/spacer1",
+    "cpu",
+    "temperature",
+    "memory",
+    "network",
+    "custom/spacer2",
+    "pulseaudio",
+    "backlight",
+    "custom/spacer3",
+    "custom/fans",
+    "battery",
+    "custom/spacer4",
+    "clock",
+  ],
+
+  "group/traym": {
+    "orientation": "horizontal",
+    "drawer": {},
+    "modules": ["custom/trayicon", "tray"],
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 48,
+    "tooltip": false,
+    "icon": true,
+    "icon-size": 18,
+    "tooltip": true,
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8,
+  },
+
+  "custom/trayicon": {
+    "format": "󰣇 ",
+    "tooltip": false,
+  },
+
+  "custom/fans": {
+    "exec": "$HOME/.config/scripts/fancheck.sh",
+    "format": "{icon} {percentage}%",
+    "format-icons": {
+      "on": "",
+      "off": "󰠝",
+    },
+    "interval": 5,
+    "return-type": "json",
+  },
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󱩎", "󱩑", "󱩓", "󱩕", "󰛨"],
+    "on-click": "brightnessctl set +5%",
+    "on-click-right": "brightnessctl set 5%-",
+  },
+
+  "battery": {
+    "states": {
+      "good": 50,
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": " {:%H:%M:%S    %a %d.%m}",
+    "tooltip-format": "{calendar}",
+    "calendar": {
+      "weeks-pos": "right",
+      "mode": "month",
+      "format": {
+        "months": "<span color='#cba6f7'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weeks": "<span color='#94e2d5'> W{}</span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>",
+      },
+    },
+  },
+
+  "cpu": {
+    "interval": 4,
+    "format": " {usage}%",
+    "states": {
+      "warning": 80,
+      "critical": 95,
+    },
+  },
+
+  "memory": {
+    "interval": 4,
+    "format": " {percentage}%",
+    "states": {
+      "warning": 80,
+      "critical": 95,
+    },
+    "tooltip": "{}",
+    "tooltip-format": "{used}/{total} GiB",
+  },
+
+  "network": {
+    "interval": 2,
+    "format": "󱘖  Offline",
+    "format-wifi": "{icon} {bandwidthDownBytes}",
+    "format-ethernet": "󰈀 {bandwidthDownBytes}",
+    "min-length": 11,
+    "tooltip": "{}",
+    "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBytes} \n󰕒 {bandwidthUpBytes}",
+    "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "states": {
+      "normal": 25,
+    },
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll-wraparound": true,
+    "smooth-scrolling-threshold": 4,
+    "enable-bar-scroll": true,
+    "format": "{icon}",
+    "show-special": true,
+    "special-visible-only": false,
+    "format-icons": {
+      "magic": " ",
+      "10": "󰊴 ",
+      "lock": "",
+    },
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "󰂰 {volume}%",
+    "format-bluetooth-muted": "󰂲 {icon}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰥰",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰄝",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "on-click": "pavucontrol-qt",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+  },
+
+  "temperature": {
+    "hwmon-path": "/sys/devices/platform/PNP0C14:02/wmi_bus/wmi_bus-PNP0C14:02/F1DDEE52-063C-4784-A11E-8A06684B9B01-7/hwmon/hwmon5/temp1_input",
+    "critical-threshold": 90,
+    "interval": 4,
+    "format": "{icon} {temperatureC}°",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false,
+  },
+
+  "tray": {
+    "icon-size": 17,
+    "spacing": 8,
+  },
+
+  "custom/spacer": {
+    "format": " ",
+    "tooltip": false,
+  },
+
+  "custom/spacer1": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer2": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer3": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer4": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer5": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer6": {
+    "format": "",
+    "tooltip": false,
+  },
+}
