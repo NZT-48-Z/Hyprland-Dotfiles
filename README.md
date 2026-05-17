@@ -15,6 +15,7 @@
  - Shell: [**`Zsh`**](https://github.com/ohmyzsh/ohmyzsh)
  - File manager: [**`Thunar`**](https://github.com/neilbrown/thunar)
 
+🌐 [EN](README.md) | [RU](README_RUS.md)
 </br>
 
 ## 🖼️ Gallery
